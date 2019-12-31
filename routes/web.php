@@ -11,6 +11,23 @@
 |
 */
 
+use App\User;
+
 Route::get('/', function () {
-    return view('welcome');
+
+    $phil = User::find(2);
+    $dave = User::find(1);
+
+    return view('home', [
+        'phil_weights' => $phil->weights,
+        'dave_weights' => $dave->weights,
+    ]);
+});
+
+Route::post('/user/{user}/weight', function(\App\User $user) {
+    $user->weights()->create([
+        'weight' => request('weight'),
+    ]);
+
+    return back();
 });
