@@ -12,6 +12,37 @@
 */
 
 use App\User;
+use Carbon\Carbon;
+
+function getData() {
+    // Dave Data
+    $dave = \App\Weight::where('user_id', 1)->get();
+
+    // Phil Data
+    $phil = \App\Weight::where('user_id', 2)->get();
+
+    return [
+        [
+            'label' => 'Dave',
+            'data' => $dave->pluck('weight')
+        ],
+        [
+            'label' => 'Phil',
+            'data' => $phil->pluck('weight')
+        ],
+    ];
+}
+
+function getLabels() {
+    // Labels
+    $weights = \App\Weight::all();
+    $dates = $weights->pluck('created_at');
+    $simpleDates = $dates->map(function ($item, $key) {
+        return $item->format('M d');
+    });
+
+    return $simpleDates->unique();
+}
 
 Route::get('/', function () {
 
@@ -21,10 +52,18 @@ Route::get('/', function () {
     return view('home', [
         'phil_weights' => $phil->weights,
         'dave_weights' => $dave->weights,
+        'data' => json_encode(getData()),
+        'labels' => json_encode(getLabels())
     ]);
 });
 
 Route::post('/user/{user}/weight', function(\App\User $user) {
+    $today = \App\Weight::where('user_id', $user->id)->whereDate('created_at', Carbon::today())->get();
+
+    if ($today->count()) {
+        return back()->with('error', 'You already recorded your weight today ' . Carbon::today()->format('M d') . '. Come back tomorrow.');
+    }
+
     $user->weights()->create([
         'weight' => request('weight'),
     ]);
