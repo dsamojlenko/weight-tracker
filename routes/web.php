@@ -50,9 +50,14 @@ Route::get('/', function () {
     $phil = User::find(2);
     $dave = User::find(1);
 
+    $dave_today = $dave->weights()->whereDate('created_at', Carbon::today())->first();
+    $phil_today = $phil->weights()->whereDate('created_at', Carbon::today())->first();
+
     return view('home', [
         'phil_weights' => $phil->weights,
         'dave_weights' => $dave->weights,
+        'dave_today' => $dave_today,
+        'phil_today' => $phil_today,
         'data' => json_encode(getData()),
         'labels' => json_encode(getLabels())
     ]);
