@@ -34,14 +34,15 @@ function getData() {
 }
 
 function getLabels() {
-    // Labels
-    $weights = \App\Weight::all();
-    $dates = $weights->pluck('created_at');
-    $simpleDates = $dates->map(function ($item, $key) {
-        return $item->format('M d');
+    $weights = \App\Weight::all()->groupBy(function ($item) {
+        return Carbon::parse($item['created_at'])->format('M d');
+    })->map(function($item){
+        return $item->all();
     });
 
-    return $simpleDates->unique();
+    $dates = $weights->keys();
+
+    return $dates;
 }
 
 Route::get('/', function () {
