@@ -7,7 +7,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-        <title>Laravel</title>
+        <title>Weight-Tracker</title>
 
         <link rel="stylesheet" href="/css/app.css">
     </head>
