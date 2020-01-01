@@ -8,13 +8,17 @@ class Data
 {
     public function getData() {
         $users = User::all();
-
         $result = collect();
+        $colours = collect([
+            'red', 'blue'
+        ]);
 
-        foreach($users as $user) {
+        foreach($users as $index => $user) {
             $result->push([
                 'label' => $user->name,
-                'data' => $user->weights->pluck('weight')
+                'data' => $user->weights->pluck('weight'),
+                'fill' => false,
+                'borderColor' => $colours[$index]
             ]);
         }
         return $result;
