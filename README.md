@@ -1,6 +1,6 @@
 # Weight-tracker
 
-Just a quick little two-person weight-tracker for a new year's resolution competition between my brother and I.
+Just a quick little two-person weight-tracker for a new year's resolution competition.
 
 ## Screenshots
 
