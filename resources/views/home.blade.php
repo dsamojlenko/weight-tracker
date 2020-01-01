@@ -25,7 +25,7 @@
                         Phil
                         <div class="absolute text-base bottom-0 pb-1 right-0">
                             @if($phil['today'])
-                                Today: {{ $phil['today']->weight }}
+                                Today: {{ $phil['today']->weight }}@if($phil['change'])({{ $phil['change'] }})@endif
                             @else
                                 Not yet recorded today
                             @endif
@@ -72,7 +72,7 @@
                         Dave
                         <div class="absolute text-base bottom-0 pb-1 right-0">
                             @if($dave['today'])
-                                Today: {{ $dave['today']->weight }}
+                                Today: {{ $dave['today']->weight }}@if($dave['change'])({{ $dave['change'] }})@endif
                             @else
                                 Enter your weight
                             @endif

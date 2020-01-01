@@ -48,22 +48,51 @@ function getLabels() {
     return $dates;
 }
 
+function getChange($user) {
+    $change = null;
+
+    if($today = $user->weights()->whereDate('created_at', Carbon::today())->first()) {
+        $previous = $user->weights()->where('id', '!=', $today->id)->latest('created_at')->first();
+
+        if ($today->weight > $previous->weight) {
+            return '+';
+        }
+
+        if ($today->weight == $previous->weight) {
+            return 'nc';
+        }
+
+        if ($today->weight < $previous->weight) {
+            return '-';
+        }
+
+        return false;
+    }
+}
+
+function getToday($user) {
+    return $user->weights()->whereDate('created_at', Carbon::today())->first();
+}
+
+function getWeights($user) {
+    return $user->weights()->orderBy('created_at')->get();
+}
+
 Route::get('/', function () {
 
     $phil = User::find(2);
     $dave = User::find(1);
 
-    $dave_today = $dave->weights()->whereDate('created_at', Carbon::today())->first();
-    $phil_today = $phil->weights()->whereDate('created_at', Carbon::today())->first();
-
     return view('home', [
         'dave' => [
-            'weights' => $dave->weights()->orderBy('created_at')->get(),
-            'today' => $dave_today,
+            'weights' => getWeights($dave),
+            'today' => getToday($dave),
+            'change' => getChange($dave),
         ],
         'phil' => [
-            'weights' => $phil->weights()->orderBy('created_at')->get(),
-            'today' => $phil_today
+            'weights' => getWeights($phil),
+            'today' => getToday($phil),
+            'change' => getChange($phil),
         ],
         'data' => json_encode(getData()),
         'labels' => json_encode(getLabels())
