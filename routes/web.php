@@ -14,6 +14,7 @@
 use App\User;
 use App\Weight;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 function getData() {
     // Dave Data
@@ -101,7 +102,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::post('/user/{user}/weight', function(\App\User $user) {
+Route::post('/user/{user}/weight', function(\App\User $user, Request $request) {
+    $request->validate([
+        'weight' => 'required|numeric'
+    ]);
+
     $today = \App\Weight::where('user_id', $user->id)->whereDate('created_at', Carbon::today())->get();
 
     if ($today->count()) {

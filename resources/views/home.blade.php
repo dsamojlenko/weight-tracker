@@ -19,7 +19,15 @@
                         <span class="block sm:inline">{{ $message }}</span>
                     </div>
                 </div>
-
+            @endif
+            @if ($errors->any())
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-4 z-50">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
             @endif
             <div class="flex-none sm:flex h-screen">
                 <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/6 p-4 border-r border-gray-300 sm:h-full bg-gray-100">
