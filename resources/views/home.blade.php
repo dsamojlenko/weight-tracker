@@ -24,8 +24,8 @@
                     <h2 class="relative text-2xl mb-4">
                         Phil
                         <div class="absolute text-base bottom-0 pb-1 right-0">
-                            @if($phil_today)
-                                Today: {{ $phil_today->weight }}
+                            @if($phil['today'])
+                                Today: {{ $phil['today']->weight }}
                             @else
                                 Not yet recorded today
                             @endif
@@ -52,7 +52,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($phil_weights as $weight)
+                                @foreach($phil['weights'] as $weight)
                                     <tr>
                                         <td>{{ $weight->created_at->format('M d') }}</td>
                                         <td>{{ $weight->weight }}</td>
@@ -71,8 +71,8 @@
                     <h2 class="relative text-2xl mb-4">
                         Dave
                         <div class="absolute text-base bottom-0 pb-1 right-0">
-                            @if($dave_today)
-                                Today: {{ $dave_today->weight }}
+                            @if($dave['today'])
+                                Today: {{ $dave['today']->weight }}
                             @else
                                 Enter your weight
                             @endif
@@ -91,22 +91,22 @@
                     </form>
 
                     <div class="hidden sm:block">
-                    <table class="mt-4 table-fixed w-full">
-                        <thead>
-                        <tr>
-                            <th class="w-1/2 text-left">Date</th>
-                            <th class="w-1/2 text-left">Weight</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($dave_weights as $weight)
-                            <tr>
-                                <td>{{ $weight->created_at->format('M d') }}</td>
-                                <td>{{ $weight->weight }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                        <table class="mt-4 table-fixed w-full">
+                            <thead>
+                                <tr>
+                                    <th class="w-1/2 text-left">Date</th>
+                                    <th class="w-1/2 text-left">Weight</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($dave['weights'] as $weight)
+                                    <tr>
+                                        <td>{{ $weight->created_at->format('M d') }}</td>
+                                        <td>{{ $weight->weight }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

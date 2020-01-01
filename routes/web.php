@@ -57,10 +57,14 @@ Route::get('/', function () {
     $phil_today = $phil->weights()->whereDate('created_at', Carbon::today())->first();
 
     return view('home', [
-        'phil_weights' => $phil->weights()->orderBy('created_at')->get(),
-        'dave_weights' => $dave->weights()->orderBy('created_at')->get(),
-        'dave_today' => $dave_today,
-        'phil_today' => $phil_today,
+        'dave' => [
+            'weights' => $dave->weights()->orderBy('created_at')->get(),
+            'today' => $dave_today,
+        ],
+        'phil' => [
+            'weights' => $phil->weights()->orderBy('created_at')->get(),
+            'today' => $phil_today
+        ],
         'data' => json_encode(getData()),
         'labels' => json_encode(getLabels())
     ]);
