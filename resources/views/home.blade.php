@@ -11,13 +11,15 @@
     <body>
         <div id="app">
             @if ($message = Session::get('error'))
-                <div class="m-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                    <strong class="font-bold">Nice try, fatty!</strong>
-                    <span class="block sm:inline">{{ $message }}</span>
-                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                        <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-                    </span>
+                <div class="absolute top-0 left-0 w-full h-screen z-10 bg-gray-100 opacity-75"></div>
+
+                <div class="absolute top-0 left-0 w-full h-screen z-10 flex items-center justify-center">
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-4 z-50" role="alert">
+                        <strong class="font-bold">Nice try, fatty!</strong>
+                        <span class="block sm:inline">{{ $message }}</span>
+                    </div>
                 </div>
+
             @endif
             <div class="flex-none sm:flex h-screen">
                 <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/6 p-4 border-r border-gray-300 sm:h-full bg-gray-100">
@@ -62,7 +64,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="w-full sm:hidden md:block md:w-1/3 xl:w-2/3 sm:p-4 sm:h-full p-4">
+                <div class="w-full sm:hidden md:block md:w-1/3 xl:w-2/3 md:p-4 md:h-full p-4">
                     <h2 class="text-2xl mb-4">The Chart</h2>
 
                     <progress-chart :datasets="{{ $data }}" :labels="{{ $labels }}"></progress-chart>

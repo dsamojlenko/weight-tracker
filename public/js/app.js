@@ -1887,7 +1887,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     this.renderChart(this.chartdata, {
       responsive: true,
-      maintainAspectRatio: true
+      maintainAspectRatio: false
     });
   }
 });

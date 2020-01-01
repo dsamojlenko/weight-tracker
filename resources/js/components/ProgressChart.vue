@@ -14,7 +14,7 @@
             }
         },
         mounted () {
-            this.renderChart(this.chartdata, {responsive: true, maintainAspectRatio: true})
+            this.renderChart(this.chartdata, {responsive: true, maintainAspectRatio: false})
         }
     }
 </script>
