@@ -11,7 +11,7 @@ class Data
         $result = collect();
 
         $colours = collect([
-            'red', 'blue'
+            'rgb(54, 162, 235)', 'rgb(75, 192, 192)'
         ]);
 
         foreach($users as $index => $user) {
