@@ -54,16 +54,18 @@ function getChange($user) {
     if($today = $user->weights()->whereDate('created_at', Carbon::today())->first()) {
         $previous = $user->weights()->where('id', '!=', $today->id)->latest('created_at')->first();
 
-        if ($today->weight > $previous->weight) {
-            return '+';
-        }
+        if($previous) {
+            if ($today->weight > $previous->weight) {
+                return '+';
+            }
 
-        if ($today->weight == $previous->weight) {
-            return 'nc';
-        }
+            if ($today->weight == $previous->weight) {
+                return 'nc';
+            }
 
-        if ($today->weight < $previous->weight) {
-            return '-';
+            if ($today->weight < $previous->weight) {
+                return '-';
+            }
         }
 
         return false;
