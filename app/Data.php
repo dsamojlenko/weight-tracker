@@ -9,6 +9,7 @@ class Data
     public function getData() {
         $users = User::all();
         $result = collect();
+
         $colours = collect([
             'red', 'blue'
         ]);
