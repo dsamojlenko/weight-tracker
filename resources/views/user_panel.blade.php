@@ -1,4 +1,4 @@
-<div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/6 p-4 border-r border-gray-300 sm:h-full bg-gray-100 overflow-y-scroll">
+<div class="w-full lg:w-3/12 xl:w-1/6 p-4 border-r border-gray-300 sm:h-full bg-gray-100 overflow-y-scroll">
     <h2 class="relative text-2xl mb-4">
         {{ $user['user']->name }}
         <div class="absolute text-base bottom-0 pb-1 right-0">
