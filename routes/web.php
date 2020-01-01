@@ -12,6 +12,7 @@
 */
 
 use App\User;
+use App\Weight;
 use Carbon\Carbon;
 
 function getData() {
@@ -34,7 +35,9 @@ function getData() {
 }
 
 function getLabels() {
-    $weights = \App\Weight::all()->groupBy(function ($item) {
+    $weights = Weight::orderBy('created_at')->get();
+
+    $weights = $weights->groupBy(function ($item) {
         return Carbon::parse($item['created_at'])->format('M d');
     })->map(function($item){
         return $item->all();
@@ -54,8 +57,8 @@ Route::get('/', function () {
     $phil_today = $phil->weights()->whereDate('created_at', Carbon::today())->first();
 
     return view('home', [
-        'phil_weights' => $phil->weights,
-        'dave_weights' => $dave->weights,
+        'phil_weights' => $phil->weights()->orderBy('created_at')->get(),
+        'dave_weights' => $dave->weights()->orderBy('created_at')->get(),
         'dave_today' => $dave_today,
         'phil_today' => $phil_today,
         'data' => json_encode(getData()),
