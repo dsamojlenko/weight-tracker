@@ -9,10 +9,10 @@ It's purpose-built for a two-person challenge, nothing more.
 Easily deployable to Heroku with JawsDB MySQL on the free tier.
 
 ## Built with
-- Laravel
-- Chart.js
-- Vue
-- Tailwindcss
+- [Laravel](https://laravel.com/)
+- [Chart.js](https://www.chartjs.org/)
+- [Vue](https://vuejs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 
 ## Responsive
 I'm no designer, but it looks ok on desktop or mobile.
