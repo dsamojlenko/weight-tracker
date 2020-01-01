@@ -7,22 +7,17 @@ use Carbon\Carbon;
 class Data
 {
     public function getData() {
-        // Dave Data
-        $dave = Weight::where('user_id', 1)->get();
+        $users = User::all();
 
-        // Phil Data
-        $phil = Weight::where('user_id', 2)->get();
+        $result = collect();
 
-        return [
-            [
-                'label' => 'Dave',
-                'data' => $dave->pluck('weight')
-            ],
-            [
-                'label' => 'Phil',
-                'data' => $phil->pluck('weight')
-            ],
-        ];
+        foreach($users as $user) {
+            $result->push([
+                'label' => $user->name,
+                'data' => $user->weights->pluck('weight')
+            ]);
+        }
+        return $result;
     }
 
     public function getLabels() {

@@ -36,21 +36,20 @@
                 </div>
             @endif
             <div class="flex-none sm:flex h-screen">
-                <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/6 p-4 border-r border-gray-300 sm:h-full bg-gray-100">
+                <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/6 p-4 border-r border-gray-300 sm:h-full bg-gray-100 overflow-y-scroll">
                     <h2 class="relative text-2xl mb-4">
-                        Phil
+                        {{ $user2['user']->name }}
                         <div class="absolute text-base bottom-0 pb-1 right-0">
-                            @if($phil['today'])
-                                Today: {{ $phil['today']->weight }}@if($phil['change'])({{ $phil['change'] }})@endif
+                            @if($user2['today'])
+                                Today: {{ $user2['today']->weight }}@if($user2['change'])({{ $user2['change'] }})@endif
                             @else
                                 Not yet recorded today
                             @endif
                         </div>
                     </h2>
 
-                    <form action="/user/2/weight" method="POST">
+                    <form action="/user/{{ $user2['user']->id }}/weight" method="POST">
                         @csrf
-                        <input type="hidden" name="user_id" value="2">
                         <div class="relative">
                             <input type="number" name="weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                             <button type="submit" class="absolute right-0 top-0 p-2"><span class="sr-only">Submit</span>
@@ -68,7 +67,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($phil['weights'] as $weight)
+                                @foreach($user2['weights'] as $weight)
                                     <tr>
                                         <td>{{ $weight->created_at->format('M d') }}</td>
                                         <td>{{ $weight->weight }}</td>
@@ -83,21 +82,20 @@
 
                     <progress-chart :datasets="{{ $data }}" :labels="{{ $labels }}"></progress-chart>
                 </div>
-                <div class="relative w-full sm:w-1/2 md:w-1/3 xl:w-1/6 p-4 border-l border-gray-300 sm:h-full bg-gray-100">
+                <div class="relative w-full sm:w-1/2 md:w-1/3 xl:w-1/6 p-4 border-l border-gray-300 sm:h-full bg-gray-100 overflow-y-scroll">
                     <h2 class="relative text-2xl mb-4">
-                        Dave
+                        {{ $user1['user']->name }}
                         <div class="absolute text-base bottom-0 pb-1 right-0">
-                            @if($dave['today'])
-                                Today: {{ $dave['today']->weight }}@if($dave['change'])({{ $dave['change'] }})@endif
+                            @if($user1['today'])
+                                Today: {{ $user1['today']->weight }}@if($user1['change'])({{ $user1['change'] }})@endif
                             @else
                                 Enter your weight
                             @endif
                         </div>
                     </h2>
 
-                    <form action="/user/1/weight" method="POST">
+                    <form action="/user/{{ $user1['user']->id }}/weight" method="POST">
                         @csrf
-                        <input type="hidden" name="user_id" value="1">
                         <div class="relative">
                             <input type="number" name="weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                             <button type="submit" class="absolute right-0 top-0 p-2"><span class="sr-only">Submit</span>
@@ -115,7 +113,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($dave['weights'] as $weight)
+                                @foreach($user1['weights'] as $weight)
                                     <tr>
                                         <td>{{ $weight->created_at->format('M d') }}</td>
                                         <td>{{ $weight->weight }}</td>

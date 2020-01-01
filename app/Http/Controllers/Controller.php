@@ -24,19 +24,21 @@ class Controller extends BaseController
 
     public function index()
     {
-        $phil = User::find(2);
-        $dave = User::find(1);
+        $user2 = User::find(2);
+        $user1 = User::find(1);
 
         return view('home', [
-            'dave' => [
-                'weights' => $this->data->getWeights($dave),
-                'today' => $this->data->getToday($dave),
-                'change' => $this->data->getChange($dave),
+            'user1' => [
+                'user' => $user1,
+                'weights' => $this->data->getWeights($user1),
+                'today' => $this->data->getToday($user1),
+                'change' => $this->data->getChange($user1),
             ],
-            'phil' => [
-                'weights' => $this->data->getWeights($phil),
-                'today' => $this->data->getToday($phil),
-                'change' => $this->data->getChange($phil),
+            'user2' => [
+                'user' => $user2,
+                'weights' => $this->data->getWeights($user2),
+                'today' => $this->data->getToday($user2),
+                'change' => $this->data->getChange($user2),
             ],
             'data' => json_encode($this->data->getData()),
             'labels' => json_encode($this->data->getLabels())
