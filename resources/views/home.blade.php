@@ -37,14 +37,29 @@
         <script src="{{ mix('js/app.js') }}"></script>
 
         <script type="text/javascript">
-            const overlay = document.querySelector('.error-overlay');
-            const modal = document.querySelector('.error-modal');
-            if(overlay) {
-                overlay.addEventListener('click', function () {
-                    overlay.remove()
-                    modal.remove()
-                })
-            }
+            /**
+             * When user taps the screen, animate out the alert
+             */
+            const overlay = $('.error-overlay');
+            const modal = $('.error-modal');
+
+            overlay.on('click', function () {
+                $('.alert-message').animate({
+                    top: '-200px'
+                }, 300, function() {
+                    overlay.fadeOut()
+                    modal.fadeOut()
+                });
+            });
+
+            /**
+             * If there is an alert message, animate it in
+             */
+            $('.alert-message').animate({
+                top: '50px'
+            }, 300, function() {
+                console.log("Huzzah");
+            })
         </script>
     </body>
 </html>

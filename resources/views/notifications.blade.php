@@ -4,7 +4,7 @@
 
             <div class="error-overlay absolute top-0 left-0 w-full h-screen z-10 bg-gray-100 opacity-75"></div>
 
-            <div class="absolute top-0 z-20 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-4 mt-16" role="alert">
+            <div class="alert-message absolute top-0 z-20 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-4 mt-16" role="alert">
                 <strong class="font-bold">Nice try, fatty!</strong>
                 <span class="block sm:inline">{{ $message }}</span>
             </div>
@@ -17,7 +17,7 @@
 
             <div class="error-overlay absolute top-0 left-0 w-full h-screen z-10 bg-gray-100 opacity-75"></div>
 
-            <div class="absolute top-0 z-20 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-4 mt-16" role="alert">
+            <div class="alert-message absolute top-0 z-20 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded m-4 mt-16" role="alert">
                 <strong class="font-bold">Nice try, fatty!</strong>
                 <span class="block sm:inline">
                     <ul>
@@ -36,7 +36,7 @@
 
             <div class="error-overlay absolute top-0 left-0 w-full h-screen z-10 bg-gray-100 opacity-75"></div>
 
-            <div class="absolute top-0 z-20 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded m-4 mt-16" role="alert">
+            <div class="alert-message absolute top-0 z-20 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded m-4 mt-16" role="alert">
                 <strong class="font-bold">Way to go, slim!</strong>
                 <span class="block sm:inline">{{ $message }}</span>
             </div>
