@@ -47,7 +47,7 @@ class Data
 
             if($previous) {
                 if ($today->weight > $previous->weight) {
-                    return '+';
+                    return '<span class="text-red-700">(+)</span>';
                 }
 
                 if ($today->weight == $previous->weight) {
@@ -55,7 +55,7 @@ class Data
                 }
 
                 if ($today->weight < $previous->weight) {
-                    return '-';
+                    return '<span class="text-green-700">(-)</span>';
                 }
             }
 

@@ -3,7 +3,7 @@
         {{ $user['user']->name }}
         <div class="absolute text-base bottom-0 pb-1 right-0">
             @if($user['today'])
-                Today: {{ $user['today']->weight }}@if($user['change'])({{ $user['change'] }})@endif
+                Today: {{ $user['today']->weight }}@if($user['change']){!! $user['change'] !!}@endif
             @else
                 Enter weight
             @endif
