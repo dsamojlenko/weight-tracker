@@ -1,6 +1,6 @@
 # Weight-tracker
 
-Just a quick little two-person weight-tracker for a new year's resolution contest.
+Just a quick little two-person weight-tracker for a new year's resolution contest. Meant to be used as a daily tracker.
 
 ## Features
 
