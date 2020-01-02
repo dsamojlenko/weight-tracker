@@ -24,8 +24,8 @@
         <table class="mt-4 table-fixed w-full">
             <thead>
             <tr>
-                <th class="w-1/2 text-left">Date</th>
-                <th class="w-1/2 text-left">Weight</th>
+                <th class="w-1/2 text-left" scope="col">Date</th>
+                <th class="w-1/2 text-left" scope="col">Weight</th>
             </tr>
             </thead>
             <tbody>
