@@ -17,7 +17,7 @@ class Data
         foreach($users as $index => $user) {
             $result->push([
                 'label' => $user->name,
-                'data' => $user->weights->pluck('weight'),
+                'data' => $user->weights()->orderBy('created_at')->get()->pluck('weight'),
                 'fill' => false,
                 'borderColor' => $colours[$index]
             ]);
