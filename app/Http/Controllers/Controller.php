@@ -24,8 +24,8 @@ class Controller extends BaseController
 
     public function index()
     {
-        $user2 = User::find(2);
         $user1 = User::find(1);
+        $user2 = User::find(2);
 
         return view('home', [
             'user1' => [
@@ -51,7 +51,7 @@ class Controller extends BaseController
             'weight' => 'required|numeric'
         ]);
 
-        $today = \App\Weight::where('user_id', $user->id)->whereDate('created_at', Carbon::today())->get();
+        $today = $user->weights()->whereDate('created_at', Carbon::today())->get();
 
         if ($today->count()) {
             return back()->with('error', 'You already recorded your weight today ' . Carbon::today()->format('M d') . '. Come back tomorrow.');
@@ -61,6 +61,6 @@ class Controller extends BaseController
             'weight' => request('weight'),
         ]);
 
-        return back();
+        return back()->with('success', 'Weight recorded!');
     }
 }

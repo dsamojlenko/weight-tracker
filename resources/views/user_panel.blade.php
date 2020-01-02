@@ -5,7 +5,7 @@
             @if($user['today'])
                 Today: {{ $user['today']->weight }}@if($user['change'])({{ $user['change'] }})@endif
             @else
-                Not yet recorded today
+                Enter weight
             @endif
         </div>
     </h2>

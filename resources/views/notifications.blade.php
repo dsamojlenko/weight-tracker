@@ -30,3 +30,16 @@
         </div>
     </div>
 @endif
+@if ($message = Session::get('success'))
+    <div class="error-modal">
+        <div class="absolute top-0 left-0 w-full h-screen z-20 flex items-center justify-center">
+
+            <div class="error-overlay absolute top-0 left-0 w-full h-screen z-10 bg-gray-100 opacity-75"></div>
+
+            <div class="z-20 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded m-4" role="alert">
+                <strong class="font-bold">Way to go, slim!</strong>
+                <span class="block sm:inline">{{ $message }}</span>
+            </div>
+        </div>
+    </div>
+@endif
