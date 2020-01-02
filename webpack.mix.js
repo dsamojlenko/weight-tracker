@@ -19,4 +19,4 @@ mix.postCss('resources/css/app.css', 'public/css', [
     require('tailwindcss'),
 ]);
 
-mix.purgeCss({ enabled: true }).version();
+mix.purgeCss().version();
